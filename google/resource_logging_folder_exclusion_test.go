@@ -14,7 +14,7 @@ func TestAccLoggingFolderExclusion(t *testing.T) {
 	t.Parallel()
 
 	testCases := map[string]func(t *testing.T){
-		"basic":                       testAccLoggingFolderExclusion_basic,
+		"basic": testAccLoggingFolderExclusion_basic,
 		"folderAcceptsFullFolderPath": testAccLoggingFolderExclusion_folderAcceptsFullFolderPath,
 		"update":                      testAccLoggingFolderExclusion_update,
 		"multiple":                    testAccLoggingFolderExclusion_multiple,

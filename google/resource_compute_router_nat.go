@@ -682,7 +682,7 @@ func flattenComputeRouterNatSubnetwork(v interface{}, d *schema.ResourceData) in
 			continue
 		}
 		transformed.Add(map[string]interface{}{
-			"name":                     flattenComputeRouterNatSubnetworkName(original["name"], d),
+			"name": flattenComputeRouterNatSubnetworkName(original["name"], d),
 			"source_ip_ranges_to_nat":  flattenComputeRouterNatSubnetworkSourceIpRangesToNat(original["sourceIpRangesToNat"], d),
 			"secondary_ip_range_names": flattenComputeRouterNatSubnetworkSecondaryIpRangeNames(original["secondaryIpRangeNames"], d),
 		})

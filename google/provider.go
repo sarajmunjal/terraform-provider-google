@@ -231,6 +231,14 @@ func Provider() terraform.ResourceProvider {
 					"GOOGLE_FILESTORE_CUSTOM_ENDPOINT",
 				}, FilestoreDefaultBasePath),
 			},
+			"firebase_custom_endpoint": {
+				Type:         schema.TypeString,
+				Optional:     true,
+				ValidateFunc: validateCustomEndpoint,
+				DefaultFunc: schema.MultiEnvDefaultFunc([]string{
+					"GOOGLE_FIREBASE_CUSTOM_ENDPOINT",
+				}, FirebaseDefaultBasePath),
+			},
 			"firestore_custom_endpoint": {
 				Type:         schema.TypeString,
 				Optional:     true,
@@ -453,9 +461,9 @@ func Provider() terraform.ResourceProvider {
 	return provider
 }
 
-// Generated resources: 86
+// Generated resources: 87
 // Generated IAM resources: 39
-// Total generated resources: 125
+// Total generated resources: 126
 func ResourceMap() map[string]*schema.Resource {
 	resourceMap, _ := ResourceMapWithErrors()
 	return resourceMap
@@ -540,6 +548,7 @@ func ResourceMapWithErrors() (map[string]*schema.Resource, error) {
 			"google_dataproc_autoscaling_policy":               resourceDataprocAutoscalingPolicy(),
 			"google_dns_managed_zone":                          resourceDNSManagedZone(),
 			"google_filestore_instance":                        resourceFilestoreInstance(),
+			"google_firebase_project":                          resourceFirebaseProject(),
 			"google_firestore_index":                           resourceFirestoreIndex(),
 			"google_iap_web_iam_binding":                       ResourceIamBinding(IapWebIamSchema, IapWebIamUpdaterProducer, IapWebIdParseFunc),
 			"google_iap_web_iam_member":                        ResourceIamMember(IapWebIamSchema, IapWebIamUpdaterProducer, IapWebIdParseFunc),
@@ -751,6 +760,7 @@ func providerConfigure(d *schema.ResourceData, terraformVersion string) (interfa
 	config.DataprocBasePath = d.Get("dataproc_custom_endpoint").(string)
 	config.DNSBasePath = d.Get("dns_custom_endpoint").(string)
 	config.FilestoreBasePath = d.Get("filestore_custom_endpoint").(string)
+	config.FirebaseBasePath = d.Get("firebase_custom_endpoint").(string)
 	config.FirestoreBasePath = d.Get("firestore_custom_endpoint").(string)
 	config.IapBasePath = d.Get("iap_custom_endpoint").(string)
 	config.KMSBasePath = d.Get("kms_custom_endpoint").(string)

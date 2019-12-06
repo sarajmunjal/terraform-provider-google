@@ -413,8 +413,8 @@ func flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeys(v inte
 			continue
 		}
 		transformed = append(transformed, map[string]interface{}{
-			"comment":                      flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeysComment(original["comment"], d),
-			"id":                           flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeysId(original["id"], d),
+			"comment": flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeysComment(original["comment"], d),
+			"id":      flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeysId(original["id"], d),
 			"ascii_armored_pgp_public_key": flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeysAsciiArmoredPgpPublicKey(original["asciiArmoredPgpPublicKey"], d),
 			"pkix_public_key":              flattenBinaryAuthorizationAttestorAttestationAuthorityNotePublicKeysPkixPublicKey(original["pkixPublicKey"], d),
 		})
